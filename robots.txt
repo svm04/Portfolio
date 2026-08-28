@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://svm04.github.io/Portfolio/sitemap.xml
