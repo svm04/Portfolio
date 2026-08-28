@@ -27,7 +27,6 @@ export default function Contact() {
         <Reveal delay={0.15}>
           <p className="mt-6 max-w-xl text-lg text-bone-dim">
             Open to Software Engineering, Business Analysis, and Project Management internships.
-            Reach out to me.
           </p>
         </Reveal>
 
