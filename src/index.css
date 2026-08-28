@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Clash Display", "Inter", -apple-system, sans-serif;
+
+  /* warm, dark ground — same dark-mode structure as before, just
+     re-tuned toward a warm charcoal so it sits naturally under an
+     amber/gold accent instead of a cool neutral one */
+  --color-ink: #0f0c09;
+  --color-ink-2: #16120d;
+  --color-surface: #1c1712;
+  --color-surface-2: #241e17;
+  --color-line: #362d21;
+  --color-bone: #f7f3ec;
+  --color-bone-dim: #a89b89;
+
+  /* amber/gold accent duo — one warm gold as the primary accent, one
+     deeper bronze as its secondary shade (same family, not a second hue) */
+  --color-mint: #e8a63c;
+  --color-mint-dim: #c98a2a;
+  --color-coral: #cf7d2f;
+  --color-coral-dim: #a8621f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  background: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-mint);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.container-px {
+  padding-left: clamp(1rem, 3vw, 3rem);
+  padding-right: clamp(1rem, 3vw, 3rem);
+}
+
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* faint dot-grid texture behind the whole site, a little stronger near
+   the top of the page (via a mask) so it reads intentionally in the
+   hero without turning busy further down */
+.dot-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.5;
+  background-image: radial-gradient(rgba(247, 243, 236, 0.35) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, black 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, black 0%, transparent 70%);
+}
+
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* grounds a cutout photo on the dark background: soft mint contact glow
+   that hugs the silhouette (drop-shadow follows alpha, not a box), a dark
+   shadow for depth, and a bottom fade so the crop line at her feet
+   dissolves into the page instead of ending in a hard edge */
+.photo-blend {
+  filter:
+    drop-shadow(0 0 40px rgba(232, 166, 60, 0.25))
+    drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 99.5%);
+  mask-image: linear-gradient(to bottom, black 90%, transparent 99.5%);
+}
+
+/* colored aura behind the sharp photo: a soft mint radial glow, circular
+   so it never reads as a boxy rectangle behind her (a silhouette-masked
+   version of this used to leak into a visible rectangular halo in some
+   browsers, so this is a plain radial blur instead) */
+.photo-aura-mint {
+  background: radial-gradient(closest-side, rgba(232, 166, 60, 0.55), rgba(232, 166, 60, 0) 70%);
+  filter: blur(38px);
+}
+
+/* soft floor contact shadow beneath the photo's feet */
+.photo-floor {
+  background: radial-gradient(ellipse at center, rgba(232, 166, 60, 0.22), rgba(232, 166, 60, 0) 70%);
+}
+
+/* soft card surface — flat, no blur, just depth */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+}
+.card-hover {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 166, 60, 0.35);
+}
