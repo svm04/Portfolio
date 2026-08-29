@@ -27,12 +27,15 @@ export default function Contact() {
         <Reveal delay={0.15}>
           <p className="mt-6 max-w-xl text-lg text-bone-dim">
             Open to Software Engineering, Business Analysis, and Project Management internships.
+            Reach out to me.
           </p>
         </Reveal>
 
         <Reveal delay={0.2} className="mt-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
           <a
-            href={`mailto:${profile.email}`}
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-mint px-8 py-4 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
           >
             <Mail size={16} /> Email me

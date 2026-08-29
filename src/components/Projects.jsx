@@ -15,7 +15,7 @@ export default function Projects() {
           </h2>
         </Reveal>
         <Reveal delay={0.14}>
-          <p className="mt-5 max-w-lg text-bone-dim">Tap a project for the full case study — the stack, the problems, and what I'd do differently.</p>
+          <p className="mt-5 max-w-lg text-bone-dim">Tap a project for the full case study, the stack, the problems, and what I'd do differently.</p>
         </Reveal>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -38,20 +38,6 @@ export default function AboutGraphic() {
           </div>
         </div>
 
-        {/* code-brackets badge, overlapping the bottom-left corner — where
-            the "Built with code" caption used to sit */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: [8, -8, 0] }}
-          transition={{
-            opacity: { duration: 0.6, delay: 0.5 },
-            y: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.9 },
-          }}
-          className="absolute -bottom-4 -left-4 z-20 flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-surface font-display text-lg text-mint shadow-lg"
-        >
-          {'</>'}
-        </motion.div>
-
         {/* floating skill chip, overlapping the left edge of the portrait */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
