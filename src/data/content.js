@@ -33,7 +33,7 @@ export const profile = {
 
 // Small stat/credibility chips shown near the hero photo.
 export const heroStats = [
-  { label: 'GPA', value: '3.61 / 4.00' },
+  { label: 'GPA', value: '3.70 / 4.00' },
   { label: 'Shipped', value: '5 Projects' },
   { label: 'Status', value: 'Open to Interns' },
 ]
@@ -73,7 +73,7 @@ export const strengths = [
 export const education = [
   {
     school: 'University of Moratuwa',
-    detail: 'BSc (Hons) in Information Technology & Management',
+    detail: 'BSc (Hons) in Information Technology & Management · GPA 3.70/4.00',
     period: '2024 – 2028 (Expected)',
   },
   {
